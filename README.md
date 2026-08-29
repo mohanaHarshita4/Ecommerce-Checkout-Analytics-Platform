@@ -1,4 +1,4 @@
-# Checkout Funnel A and B Testing Project
+# Ecommerce-Checkout-Analytics-Platform
 
 This project looks at three common problems people run into when they try to buy something online, and checks if fixing them actually leads to more people finishing their purchase, using real statistics instead of guessing.
 Alongside the analysis, I also built an interactive Power BI dashboard to visualize the results, with completion and conversion rates by group, sample sizes, and chi-square significance for each test, plus a summary page comparing all three.
