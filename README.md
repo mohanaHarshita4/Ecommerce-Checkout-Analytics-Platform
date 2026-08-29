@@ -48,9 +48,8 @@ Python, pandas, scipy, matplotlib, inside a Jupyter notebook.
 - triggers_procedures.sql — inventory triggers, stored procedures for revenue and customer lifetime value reporting, and a transaction/concurrency demo
 - mongodb_setup.js — MongoDB collections for review text and clickstream data (the unstructured companion store)
 - app.py — a small Flask application connecting to MySQL, with routes for low stock alerts, revenue by category, and customer lifetime value
-- eer_diagram.png — the EER diagram for the schema
+- ERR1.png — the EER diagram for the schema
 - relational_algebra_queries.md — relational algebra expressions for the main queries, alongside their SQL equivalents
-- project_proposal.md — write-up covering scope, normalization, and design rationale for the database backend
 
 
 ## Dashboard
