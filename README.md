@@ -41,16 +41,15 @@ Python, pandas, scipy, matplotlib, inside a Jupyter notebook.
 - test3_form_length.csv — simulated dataset used for test 3
 - test3_chart.png — a saved chart from test 3
 
- ## Database backend (extension):
-
--schema.sql — MySQL schema: 9 tables covering customers, products, categories, inventory, promotions, orders, order items, and reviews
--sample_data.sql — sample data to populate the schema
--triggers_procedures.sql — inventory triggers, stored procedures for revenue and customer lifetime value reporting, and a transaction/concurrency demo
--mongodb_setup.js — MongoDB collections for review text and clickstream data (the unstructured companion store)
--app.py — a small Flask application connecting to MySQL, with routes for low stock alerts, revenue by category, and customer lifetime value
--eer_diagram.png — the EER diagram for the schema
--relational_algebra_queries.md — relational algebra expressions for the main queries, alongside their SQL equivalents
--project_proposal.md — write-up covering scope, normalization, and design rationale for the database backend
+ Database backend (extension):
+- schema.sql — MySQL schema: 9 tables covering customers, products, categories, inventory, promotions, orders, order items, and reviews
+- sample_data.sql — sample data to populate the schema
+- triggers_procedures.sql — inventory triggers, stored procedures for revenue and customer lifetime value reporting, and a transaction/concurrency demo
+- mongodb_setup.js — MongoDB collections for review text and clickstream data (the unstructured companion store)
+- app.py — a small Flask application connecting to MySQL, with routes for low stock alerts, revenue by category, and customer lifetime value
+- eer_diagram.png — the EER diagram for the schema
+- relational_algebra_queries.md — relational algebra expressions for the main queries, alongside their SQL equivalents
+- project_proposal.md — write-up covering scope, normalization, and design rationale for the database backend
 
 
 ## Dashboard
