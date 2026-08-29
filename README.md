@@ -46,6 +46,17 @@ Python, pandas, scipy, matplotlib, inside a Jupyter notebook.
 ![Dashboard preview](./dashboard_summary.png)
 Interactive Power BI dashboard: [checkout_funnel_dashboard.pbix](./checkout_funnel_dashboard.pbix)
 
+##Database backend (extension):
+
+-schema.sql — MySQL schema: 9 tables covering customers, products, categories, inventory, promotions, orders, order items, and reviews
+-sample_data.sql — sample data to populate the schema
+-triggers_procedures.sql — inventory triggers, stored procedures for revenue and customer lifetime value reporting, and a transaction/concurrency demo
+-mongodb_setup.js — MongoDB collections for review text and clickstream data (the unstructured companion store)
+-app.py — a small Flask application connecting to MySQL, with routes for low stock alerts, revenue by category, and customer lifetime value
+-eer_diagram.png — the EER diagram for the schema
+-relational_algebra_queries.md — relational algebra expressions for the main queries, alongside their SQL equivalents
+-project_proposal.md — write-up covering scope, normalization, and design rationale for the database backend
+
 ## About me
 
 I am a graduate student at Northeastern University's Khoury College of Computer Science. I built this project to carry out A and B testing on some common issues faced by customers during the checkout process. I picked this topic because I have personally run into most of these problems myself while shopping online, and I wanted to see if there was real data behind why these small changes actually matter.
