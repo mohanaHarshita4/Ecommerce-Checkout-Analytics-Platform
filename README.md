@@ -41,12 +41,7 @@ Python, pandas, scipy, matplotlib, inside a Jupyter notebook.
 - test3_form_length.csv — simulated dataset used for test 3
 - test3_chart.png — a saved chart from test 3
 
-
-## Dashboard
-![Dashboard preview](./dashboard_summary.png)
-Interactive Power BI dashboard: [checkout_funnel_dashboard.pbix](./checkout_funnel_dashboard.pbix)
-
-##Database backend (extension):
+ ## Database backend (extension):
 
 -schema.sql — MySQL schema: 9 tables covering customers, products, categories, inventory, promotions, orders, order items, and reviews
 -sample_data.sql — sample data to populate the schema
@@ -56,6 +51,17 @@ Interactive Power BI dashboard: [checkout_funnel_dashboard.pbix](./checkout_funn
 -eer_diagram.png — the EER diagram for the schema
 -relational_algebra_queries.md — relational algebra expressions for the main queries, alongside their SQL equivalents
 -project_proposal.md — write-up covering scope, normalization, and design rationale for the database backend
+
+
+## Dashboard
+![Dashboard preview](./dashboard_summary.png)
+Interactive Power BI dashboard: [checkout_funnel_dashboard.pbix](./checkout_funnel_dashboard.pbix)
+
+Database backend extension
+
+The A/B testing notebook and dashboard above analyze checkout conversion from the data side, looking at what happens once a checkout attempt is logged. This extension builds the actual database a system like this would run on: a normalized MySQL schema for customers, products, orders and inventory, triggers and stored procedures for automatic inventory management and revenue reporting, a MongoDB store for review text and clickstream logs that don't fit a fixed schema, and a Flask application layer that connects to MySQL and runs the stored procedures through a browser.
+
+
 
 ## About me
 
