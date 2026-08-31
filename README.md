@@ -49,7 +49,7 @@ Python, pandas, scipy, matplotlib, inside a Jupyter notebook.
 - triggers_procedures.sql — inventory triggers, stored procedures for revenue and customer lifetime value reporting, and a transaction/concurrency demo
 - ab_test_results_addition.sql — a table holding the actual results from the three A/B tests above (real numbers, not placeholders), so the database and the         notebook are telling the same story.
 - mongodb_setup.js — MongoDB collections for review text and clickstream data (the unstructured companion store)
-- app.py — a small Flask application connecting to MySQL, with routes for low stock alerts, revenue by category, and customer lifetime value
+- app.py — a small Flask application connecting to MySQL, with routes for low stock alerts, revenue by category, customer lifetime value, and the A/B test results
 - ERR1.png — the EER diagram for the schema
 - relational_algebra_queries.md — relational algebra expressions for the main queries, alongside their SQL equivalents
 
