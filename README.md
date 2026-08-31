@@ -1,7 +1,8 @@
 # Ecommerce-Checkout-Analytics-Platform
 
-This project looks at three common problems people run into when they try to buy something online, and checks if fixing them actually leads to more people finishing their purchase, using real statistics instead of guessing.
-Alongside the analysis, I also built an interactive Power BI dashboard to visualize the results, with completion and conversion rates by group, sample sizes, and chi-square significance for each test, plus a summary page comparing all three.
+This project looks at three common problems people run into when they try to buy something online, and checks if fixing them actually leads to more people finishing their purchase, using real statistics instead of guessing. Alongside the analysis, I also built an interactive Power BI dashboard to visualize the results, with completion and conversion rates by group, sample sizes, and chi-square significance for each test, plus a summary page comparing all three.
+
+As an extension of this project, I also designed and built the relational database backend that a system like this would run on in production, along with a MongoDB store for unstructured data and a small Flask application layer connecting to it. The database actually stores the real results from the three A/B tests below, so the two halves of this project connect to each other, not just in writing. That part is covered further down in this README.
 
 ## What this project does
 
@@ -46,6 +47,7 @@ Python, pandas, scipy, matplotlib, inside a Jupyter notebook.
 - schema.sql — MySQL schema: 9 tables covering customers, products, categories, inventory, promotions, orders, order items, and reviews
 - sample_data.sql — sample data to populate the schema
 - triggers_procedures.sql — inventory triggers, stored procedures for revenue and customer lifetime value reporting, and a transaction/concurrency demo
+- ab_test_results_addition.sql — a table holding the actual results from the three A/B tests above (real numbers, not placeholders), so the database and the         notebook are telling the same story.
 - mongodb_setup.js — MongoDB collections for review text and clickstream data (the unstructured companion store)
 - app.py — a small Flask application connecting to MySQL, with routes for low stock alerts, revenue by category, and customer lifetime value
 - ERR1.png — the EER diagram for the schema
