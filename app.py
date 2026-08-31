@@ -12,9 +12,7 @@ import mysql.connector
 
 app = Flask(__name__)
 
-# ---------------------------------------------------
-# EDIT THIS: put your actual MySQL root password here
-# ---------------------------------------------------
+
 DB_CONFIG = {
     "host": "127.0.0.1",
     "user": "root",
@@ -27,10 +25,7 @@ def get_connection():
     return mysql.connector.connect(**DB_CONFIG)
 
 
-# ---------------------------------------------------
-# Simple HTML template shared by all pages so results
-# show up as a readable table instead of raw text
-# ---------------------------------------------------
+
 PAGE_TEMPLATE = """
 <!DOCTYPE html>
 <html>
@@ -52,6 +47,7 @@ PAGE_TEMPLATE = """
         <a href="/low-stock">Low Stock</a>
         <a href="/revenue/2026/8">Revenue (Aug 2026)</a>
         <a href="/customer/1">Customer 1 Lifetime Value</a>
+        <a href="/ab-test-results">A/B Test Results</a>
     </nav>
     <h1>{{ title }}</h1>
     {% if rows %}
@@ -72,7 +68,6 @@ PAGE_TEMPLATE = """
 </html>
 """
 
-
 @app.route("/")
 def home():
     return """
@@ -82,8 +77,31 @@ def home():
         <li><a href="/low-stock">Low Stock Alert</a></li>
         <li><a href="/revenue/2026/8">Monthly Revenue by Category (Aug 2026)</a></li>
         <li><a href="/customer/1">Customer Lifetime Value (Customer 1)</a></li>
+        <li><a href="/ab-test-results">A/B Test Results</a></li>
     </ul>
     """
+
+@app.route("/customer/<int:customer_id>")
+def customer_lifetime_value(customer_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.callproc("sp_customer_lifetime_value", [customer_id])
+
+    columns = []
+    rows = []
+    for result in cursor.stored_results():
+        columns = [desc[0] for desc in result.description]
+        rows = result.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template_string(
+        PAGE_TEMPLATE,
+        title=f"Lifetime Value - Customer {customer_id}",
+        columns=columns,
+        rows=rows,
+    )
 
 
 @app.route("/low-stock")
@@ -129,26 +147,20 @@ def revenue(year, month):
     )
 
 
-@app.route("/customer/<int:customer_id>")
-def customer_lifetime_value(customer_id):
+@app.route("/ab-test-results")
+def ab_test_results():
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.callproc("sp_customer_lifetime_value", [customer_id])
+    cursor.execute("SELECT * FROM ABTestResults")
 
-    columns = []
-    rows = []
-    for result in cursor.stored_results():
-        columns = [desc[0] for desc in result.description]
-        rows = result.fetchall()
+    columns = [desc[0] for desc in cursor.description]
+    rows = cursor.fetchall()
 
     cursor.close()
     conn.close()
 
     return render_template_string(
-        PAGE_TEMPLATE,
-        title=f"Lifetime Value - Customer {customer_id}",
-        columns=columns,
-        rows=rows,
+        PAGE_TEMPLATE, title="A/B Test Results", columns=columns, rows=rows
     )
 
 
